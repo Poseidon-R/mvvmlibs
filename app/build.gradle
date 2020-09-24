@@ -1,0 +1,138 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: "${rootProject.rootDir}/pgyerUpload.gradle"
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    compileSdkVersion 29
+    dataBinding {
+        enabled true
+    }
+    defaultConfig {
+        applicationId "com.robot.baselibs"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+        }
+        flavorDimensions "default"
+        //路由
+        javaCompileOptions.annotationProcessorOptions {
+            arguments = [moduleName: project.getName()]
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    packagingOptions {
+        pickFirst '**/libc++_shared.so'
+        doNotStrip "*/armeabi/libYTCommon.so"
+        doNotStrip "*/armeabi-v7a/libYTCommon.so"
+        doNotStrip "*/x86/libYTCommon.so"
+        doNotStrip "*/arm64-v8a/libYTCommon.so"
+        pickFirst 'lib/armeabi-v7a/libTRAECodec.so'
+        pickFirst 'lib/armeabi-v7a/libstlport_shared.so'
+        pickFirst 'lib/armeabi/libTRAECodec.so'
+        pickFirst 'lib/armeabi/libstlport_shared.so'
+    }
+    sourceSets.main {
+        jniLibs.srcDirs = ['libs']
+        java.srcDirs += 'src/support/java'
+        res.srcDirs += 'src/support/res'
+        res.srcDirs += 'src/support/order_res'
+        res.srcDirs += 'src/support/personal_res'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    signingConfigs {
+        Properties properties = new Properties()
+        if (rootProject.file("local.properties").exists()) {
+            properties.load(rootProject.file("local.properties").newDataInputStream())
+        }
+
+        jenkins {
+            storeFile file(System.getProperty('StoreFilePath') ?: properties.get("STOREFILE"))
+            storePassword System.getProperty('StorePassword') ?: properties.get("STOREPASSWORD")
+            keyAlias System.getProperty('KeyAlias') ?: properties.get("KEYALIAS")
+            keyPassword System.getProperty('KeyPassword') ?: properties.get("KEYPASSWORD")
+        }
+
+    }
+    buildTypes {
+        debug {
+            zipAlignEnabled true
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.jenkins
+        }
+        release {
+            zipAlignEnabled true
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.jenkins
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName
+                if (variant.buildType.name == "release") {
+                    // 输出apk名称为
+                    fileName = "robot-release.apk"
+                } else {
+                    fileName = "robot-debug.apk"
+                }
+                outputFileName = fileName
+            }
+        }
+    }
+    productFlavors {
+        publish {
+            applicationId "com.robot.baselibs"
+            buildConfigField 'String', 'API_SERVER_URL', '"http://www.baidu.com/api/"'
+            buildConfigField 'String', 'PIC_BASE_URL', '"http://www.baidu.com/api/"'
+            buildConfigField 'String', 'WEB_BASE_URL', '"http://www.baidu.com/"'
+            manifestPlaceholders = [app_name: "robot"]
+            dimension "default"
+        }
+        dev {
+            applicationId "com.robot.baselibs.dev"
+            buildConfigField 'String', 'API_SERVER_URL', '"http://www.baidu.com/api/"'
+            buildConfigField 'String', 'PIC_BASE_URL', '"http://www.baidu.com/api/"'
+            buildConfigField 'String', 'WEB_BASE_URL', '"http://www.baidu.com/"'
+            manifestPlaceholders = [app_name: "robotByDev"]
+            dimension "default"
+        }
+    }
+}
+dependencies {
+    annotationProcessor project(':component-compiler')
+    kapt project(':component-compiler')
+    implementation project(':baselibs')
+
+}

@@ -1,0 +1,140 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    dataBinding {
+        enabled true
+    }
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+        }
+        javaCompileOptions.annotationProcessorOptions {
+            arguments = [moduleName: project.getName()]
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    packagingOptions {
+        pickFirst '**/libc++_shared.so'
+        doNotStrip "*/armeabi/libYTCommon.so"
+        doNotStrip "*/armeabi-v7a/libYTCommon.so"
+        doNotStrip "*/x86/libYTCommon.so"
+        doNotStrip "*/arm64-v8a/libYTCommon.so"
+        pickFirst 'lib/armeabi-v7a/libTRAECodec.so'
+        pickFirst 'lib/armeabi-v7a/libstlport_shared.so'
+        pickFirst 'lib/armeabi/libTRAECodec.so'
+        pickFirst 'lib/armeabi/libstlport_shared.so'
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    sourceSets.main {
+        jniLibs.srcDirs = ['libs']
+        java.srcDirs += 'src/support/java'
+        res.srcDirs += 'src/support/res'
+        res.srcDirs += 'src/support/order_res'
+        res.srcDirs += 'src/support/personal_res'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api 'androidx.core:core-ktx:1.3.0'
+    api 'androidx.appcompat:appcompat:1.1.0'
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api 'com.github.goldze:MVVMHabit:3.1.6'
+    api 'com.alibaba:fastjson:1.1.67.android'
+    api 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
+    api 'com.yanzhenjie:permission:2.0.0-rc12'
+    api 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.8'
+    api 'com.facebook.stetho:stetho:1.5.0'
+    api "com.facebook.stetho:stetho-okhttp3:1.5.0"
+    api "com.facebook.stetho:stetho-js-rhino:1.5.0"
+    annotationProcessor project(':component-compiler')
+    kapt project(':component-compiler')
+    api project(':component-annotations')
+    /**
+     * 轮播图
+     */
+    api 'com.youth.banner:banner:1.4.10'  //最新版本
+    /**
+     * 网易七鱼在线客服系统
+     */
+    api 'com.qiyukf.unicorn:unicorn:5.2.1'
+    /**
+     * 沉浸式菜单
+     */
+    api 'com.gyf.immersionbar:immersionbar:3.0.0'
+    api 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+    api 'com.gyf.immersionbar:immersionbar-ktx:3.0.0'
+    /**
+     * 阴影布局
+     */
+    api 'com.github.lihangleo2:ShadowLayout:2.1.8'
+    /**
+     * 侧滑菜单栏
+     */
+    api 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
+//    /**
+//     * 友盟相关
+//     */
+//    implementation 'com.umeng.umsdk:common:1.5.4'
+//    implementation 'com.umeng.umsdk:utdid:1.1.5.3'
+//    implementation 'com.umeng.umsdk:share-core:7.0.2'
+//    implementation 'com.umeng.umsdk:share-board:7.0.2'
+    //依赖一个utils类
+    api 'com.google.android:flexbox:1.0.0'
+//    /**
+//     * 微信支付相关
+//     */
+//    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+    /**
+     * 刷新加载更多控件
+     */
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
+
+
+    api 'com.tencent.bugly:crashreport:latest.release'
+    api 'com.github.HuanTanSheng:EasyPhotos:3.0.6'
+    //androidx版本，图片选择和拍照控件 支持android 10，永久维护
+    api 'com.blankj:utilcode:1.28.0'
+
+    api 'com.github.liys666666:DoubleClick:V2.0.5'
+    api project(path: ':socialLib')
+    api 'com.qmuiteam:qmui:1.4.0'
+    //高亮textView
+    api 'com.github.armcha:AutoLinkTextView:0.3.0'
+    //webview
+    api 'com.just.agentweb:agentweb:4.0.3-beta' // (必选)
+
+}

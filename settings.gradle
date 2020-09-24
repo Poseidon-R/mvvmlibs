@@ -1,0 +1,3 @@
+include ':baselibs'
+include ':app',':component-annotations',':component-compiler',':socialLib'
+rootProject.name = "Small Doctor"

@@ -1,0 +1,73 @@
+if (assembleApp.toBoolean()) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+
+android {
+
+    compileSdkVersion build_versions.compile_sdk
+
+    defaultConfig {
+        multiDexEnabled true
+
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //路由
+        javaCompileOptions.annotationProcessorOptions {
+            arguments = [moduleName: project.getName()]
+        }
+    }
+
+    if (!assembleApp.toBoolean()) {
+        sourceSets.main {
+            jniLibs.srcDirs = ['libs']
+            manifest.srcFile 'src/app/AndroidManifest.xml'
+            java.srcDirs += 'src/app/java'
+            res.srcDirs += 'src/app/res'
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation deps.test.junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.espresso.core
+
+    annotationProcessor deps.glide.compiler
+    annotationProcessor deps.alibaba.arouter_compiler
+
+    kapt deps.glide.compiler
+    kapt deps.butterknife.butterknife_compiler
+    kapt deps.alibaba.arouter_compiler
+
+}

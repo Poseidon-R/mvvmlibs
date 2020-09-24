@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_dialog"
+            android:layout_width="@dimen/x670"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_bg_ffffff_cir_8px"
+            android:gravity="center_horizontal"
+            android:minHeight="@dimen/y910"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y128"
+                android:gravity="center"
+                android:text="@string/text_kindly_reminder"
+                android:textColor="@color/text_black_3E3E3E"
+                android:textSize="@dimen/x36"
+                android:textStyle="bold" />
+
+            <com.luseen.autolinklibrary.AutoLinkTextView
+                android:id="@+id/auto_link_tv_splash_agreement_content_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/x32"
+                android:layout_marginEnd="@dimen/x32"
+                android:lineSpacingExtra="@dimen/x8"
+                android:textColor="@color/text_black_3E3E3E"
+                android:textSize="@dimen/x30"
+                tools:text="@string/text_splash_agreement_content_1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/x32"
+                android:layout_marginEnd="@dimen/x32"
+                android:lineSpacingExtra="@dimen/x8"
+                android:text="@string/text_splash_agreement_content_2"
+                android:textColor="@color/text_black_3E3E3E"
+                android:textSize="@dimen/x30" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:layout_marginTop="@dimen/y40"
+                android:background="@color/line_gray_F5F5F5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y112"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_dialog_disagree"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/text_splash_agreement_disagree"
+                    android:textColor="@color/text_black_3E3E3E"
+                    android:textSize="@dimen/x30" />
+
+                <View
+                    android:layout_width="@dimen/x2"
+                    android:layout_height="match_parent"
+                    android:background="@color/line_gray_F5F5F5" />
+
+                <TextView
+                    android:id="@+id/tv_dialog_agree_continue"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/text_splash_agreement_agree_continue"
+                    android:textColor="@color/text_red_CA3232"
+                    android:textSize="@dimen/x30" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_dialog_again"
+            android:layout_width="@dimen/x670"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_bg_ffffff_cir_8px"
+            android:gravity="center_horizontal"
+            android:minHeight="@dimen/y336"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_marginStart="@dimen/x32"
+                android:layout_marginEnd="@dimen/x32"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/x8"
+                android:text="@string/text_splash_agreement_content_3"
+                android:textColor="@color/text_black_3E3E3E"
+                android:textSize="@dimen/x30" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:background="@color/line_gray_F5F5F5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y112"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_dialog_again_exit_app"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/text_splash_agreement_exit_app"
+                    android:textColor="@color/text_black_3E3E3E"
+                    android:textSize="@dimen/x30" />
+
+                <View
+                    android:layout_width="@dimen/x2"
+                    android:layout_height="match_parent"
+                    android:background="@color/line_gray_F5F5F5" />
+
+                <TextView
+                    android:id="@+id/tv_dialog_again_do_agree"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/text_splash_agreement_do_agree"
+                    android:textColor="@color/text_red_CA3232"
+                    android:textSize="@dimen/x30" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

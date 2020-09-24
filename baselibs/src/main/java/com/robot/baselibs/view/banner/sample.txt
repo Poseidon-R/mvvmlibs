@@ -1,0 +1,38 @@
+
+
+   DkBanner<DemandBannersCase.BannerListBean> mCvHome;
+
+
+
+   mCvHome.setIndicatorPoint(R.drawable.cirlce_point_blue_2ff, R.drawable.cirlce_point_grey_e5,
+                AutoUtils.getPercentWidthSize(10), AutoUtils.getPercentWidthSize(10));
+        mCvHome.setOnItemClickListener((view, banner, postion, realPostion) ->
+                ARouter.getInstance()
+                .build(Demand.DemandDetailForBannerActivity.NAME)
+                .withString(Demand.DemandDetailForBannerActivity.KEY_BANNER_ID,
+                        String.valueOf(banner.getBanner_id()))
+                .navigation());
+
+        mCvHome.setVpClipToPadding(
+                AutoUtils.getPercentWidthSize(100),
+                AutoUtils.getPercentWidthSize(12),
+                AutoUtils.getPercentWidthSize(100),
+                AutoUtils.getPercentWidthSize(44), false);
+        mCvHome.setPageTransformer(new ViewPager.PageTransformer() {
+            float MIN_ALPHA = 0.4F;
+            float MIN_SCALE = 0.83F;
+
+            @Override
+            public void transformPage(View page, float position) {
+                if (position < -1 || position > 1) {
+                    page.setAlpha(MIN_ALPHA);
+                    page.setScaleX(MIN_SCALE);
+                    page.setScaleY(MIN_SCALE);
+                } else {
+                    page.setAlpha((1 - MIN_ALPHA) * (1 - Math.abs(position)) + MIN_ALPHA);
+                    page.setScaleX((1 - MIN_SCALE) * (1 - Math.abs(position)) + MIN_SCALE);
+                    page.setScaleY((1 - MIN_SCALE) * (1 - Math.abs(position)) + MIN_SCALE);
+                }
+                page.setTranslationX((float) (page.getWidth() * 0.05 * -position));
+            }
+        });

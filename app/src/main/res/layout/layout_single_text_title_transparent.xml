@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="49dp"
+    android:orientation="vertical"
+    tools:background="@color/color66"
+    android:id="@id/dk_title"
+    >
+
+    <ImageView
+        android:id="@+id/iv_onback"
+        android:layout_width="49dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/view_press_style_dark"
+        android:padding="16dp"
+        android:src="@mipmap/ic_back_white"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:text="收益" />
+
+
+</FrameLayout>

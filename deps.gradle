@@ -1,0 +1,249 @@
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ **/
+ext.deps = [:]
+def versions = [:]
+versions.arch_core = "1.1.1"
+versions.room = "1.1.1"
+versions.lifecycle = "1.1.1"
+versions.support = "27.1.1"
+versions.dagger = "2.15"
+versions.junit = "4.12"
+versions.espresso = "3.0.1"
+versions.retrofit = "2.3.0"
+versions.okhttp_logging_interceptor = "3.9.0"
+versions.mockwebserver = "3.8.1"
+versions.apache_commons = "2.5"
+versions.mockito = "2.7.19"
+versions.mockito_all = "1.10.19"
+versions.dexmaker = "2.2.0"
+versions.constraint_layout = "1.0.2"
+versions.glide = "4.9.0"
+versions.timber = "4.5.1"
+versions.android_gradle_plugin = "3.0.1"
+versions.rxjava2 = "2.1.8"
+versions.rxAndroid = "2.0.1"
+versions.rxjavaAdapter = "2.3.0"
+versions.rxpermissions = "0.9.5@aar"
+versions.atsl_runner = "1.0.1"
+versions.atsl_rules = "1.0.1"
+versions.hamcrest = "1.3"
+
+versions.kotlin = "1.2.41"
+versions.anko = "0.10.5"
+
+versions.paging = "1.0.1"
+versions.work = "1.0.0-alpha04"
+versions.navigation = "1.0.0-alpha01"
+
+versions.constraint_layout = "1.1.1"
+versions.qiniu_video = "0.8.+"
+versions.playerbase = "3.2.9"
+//versions.photoview = "latest.release.here"
+versions.photoview = "1.2.4"
+versions.butterknife = "10.1.0"
+versions.flex_box_layout = "1.0.0"
+versions.arouter_api = "1.3.1"
+versions.arouter_compiler = "1.1.4"
+versions.retrolambda = "3.7.0"
+versions.qiniu_sdk = "7.3.+"
+versions.multidex = "1.0.2"
+versions.fastjson = "1.1.67.android"
+versions.converter_fastjson = "2.1.0"
+versions.stetho = "1.5.0"
+versions.tangram = "3.1.2"
+versions.vlayout = "1.2.16"
+versions.carouselview = "0.1.5"
+versions.jpush = "3.1.5"
+versions.jcore = "1.2.3"
+versions.and_permission="2.0.0-rc12"
+
+def deps = [:]
+
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$versions.support"
+support.app_compat = "com.android.support:appcompat-v7:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.constraint_layout = "com.android.support.constraint:constraint-layout:${versions.constraint_layout}"
+support.cardview = "com.android.support:cardview-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.v4 = "com.android.support:support-v4:$versions.support"
+support.core_utils = "com.android.support:support-core-utils:$versions.support"
+support.multidex = "com.android.support:multidex:$versions.multidex"
+deps.support = support
+
+def room = [:]
+room.runtime = "android.arch.persistence.room:runtime:$versions.room"
+room.compiler = "android.arch.persistence.room:compiler:$versions.room"
+room.rxjava2 = "android.arch.persistence.room:rxjava2:$versions.room"
+room.testing = "android.arch.persistence.room:testing:$versions.room"
+deps.room = room
+
+def lifecycle = [:]
+lifecycle.runtime = "android.arch.lifecycle:runtime:$versions.lifecycle"
+lifecycle.extensions = "android.arch.lifecycle:extensions:$versions.lifecycle"
+lifecycle.java8 = "android.arch.lifecycle:common-java8:$versions.lifecycle"
+lifecycle.compiler = "android.arch.lifecycle:compiler:$versions.lifecycle"
+deps.lifecycle = lifecycle
+
+def arch_core = [:]
+arch_core.testing = "android.arch.core:core-testing:$versions.arch_core"
+deps.arch_core = arch_core
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+deps.retrofit = retrofit
+deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_logging_interceptor}"
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger = dagger
+
+def espresso = [:]
+espresso.core = "com.android.support.test.espresso:espresso-core:$versions.espresso"
+espresso.contrib = "com.android.support.test.espresso:espresso-contrib:$versions.espresso"
+espresso.intents = "com.android.support.test.espresso:espresso-intents:$versions.espresso"
+deps.espresso = espresso
+
+def atsl = [:]
+atsl.runner = "com.android.support.test:runner:$versions.atsl_runner"
+atsl.rules = "com.android.support.test:rules:$versions.atsl_runner"
+deps.atsl = atsl
+
+def mockito = [:]
+mockito.core = "org.mockito:mockito-core:$versions.mockito"
+mockito.all = "org.mockito:mockito-all:$versions.mockito_all"
+deps.mockito = mockito
+
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
+kotlin.anko = "org.jetbrains.anko:anko:$versions.anko"
+
+deps.kotlin = kotlin
+
+deps.paging = "android.arch.paging:runtime:$versions.paging"
+
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+glide.okhttp3 = "com.github.bumptech.glide:okhttp3-integration:$versions.glide"
+deps.glide = glide
+
+def work = [:]
+work.runtime = "android.arch.work:work-runtime:$versions.work"
+work.testing = "android.arch.work:work-testing:$versions.work"
+work.firebase = "android.arch.work:work-firebase:$versions.work"
+work.runtime_ktx = "android.arch.work:work-runtime-ktx:$versions.work"
+deps.work = work
+
+def navigation = [:]
+navigation.runtime = "android.arch.navigation:navigation-runtime:$versions.navigation"
+navigation.runtime_ktx = "android.arch.navigation:navigation-runtime-ktx:$versions.navigation"
+navigation.fragment = "android.arch.navigation:navigation-fragment:$versions.navigation"
+navigation.fragment_ktx = "android.arch.navigation:navigation-fragment-ktx:$versions.navigation"
+navigation.safe_args_plugin = "android.arch.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+navigation.testing_ktx = "android.arch.navigation:navigation-testing-ktx:$versions.navigation"
+deps.navigation = navigation
+
+//-------库沉淀------
+def widgets = [:]
+widgets.photoview = "com.github.chrisbanes.photoview:library:$versions.photoview"
+widgets.flex_box_layout = "com.google.android:flexbox:$versions.flex_box_layout"
+deps.widgets = widgets
+
+def video = [:]
+video.qiniu_video = "com.qiniu.pili:pili-android-qos:$versions.qiniu_video"
+deps.video = video
+
+def alibaba = [:]
+alibaba.arouter_api = "com.alibaba:arouter-api:$versions.arouter_api"
+alibaba.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+alibaba.fastjson = "com.alibaba:fastjson:$versions.fastjson"
+alibaba.converter_fastjson = "org.ligboy.retrofit2:converter-fastjson-android:$versions.converter_fastjson"
+alibaba.tangram = "com.alibaba.android:tangram:$versions.tangram"
+alibaba.vlayout = "com.alibaba.android:vlayout:$versions.vlayout"
+deps.alibaba = alibaba
+
+def facebook = [:]
+facebook.stetho = "com.facebook.stetho:stetho:$versions.stetho"
+facebook.stetho_okhttp3 = "com.facebook.stetho:stetho-okhttp3:$versions.stetho"
+facebook.stetho_js_rhino = "com.facebook.stetho:stetho-js-rhino:$versions.stetho"
+deps.facebook = facebook
+
+def butterknife = [:]
+butterknife.butterknife = "com.jakewharton:butterknife:$versions.butterknife"
+butterknife.butterknife_compiler = "com.jakewharton:butterknife-compiler:$versions.butterknife"
+butterknife.butterknife_gradle_plugin = "com.jakewharton:butterknife-gradle-plugin:$versions.butterknife"
+deps.butterknife = butterknife
+
+def test = [:]
+test.junit = "junit:junit:$versions.junit"
+deps.test = test
+
+def tencent = [:]
+tencent.wechat_opensdk = "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+"
+tencent.tencent_map = "com.tencent.map:tencent-map-vector-sdk:latest.release"
+tencent.mta = "com.qq.mta:mta:3.4.7-release"
+tencent.mid = "com.tencent.mid:mid:4.06-release"
+tencent.bugly_sdk = "com.tencent.bugly:crashreport:2.6.6"
+tencent.bugly_ndk = "com.tencent.bugly:nativecrashreport:3.3.1"
+deps.tencent = tencent
+
+def push = [:]
+push.jgsdk_jpush = "cn.jiguang.sdk:jpush:$versions.jpush"
+push.jgsdk_jcore = "cn.jiguang.sdk:jcore:$versions.jcore"
+deps.push = push
+
+//针对该项目其他依赖
+def project = [:]
+project.qiniu_video = "com.qiniu.pili:pili-android-qos:$versions.qiniu_video"
+project.carouselview = "com.synnapps:carouselview:$versions.carouselview"
+deps.project = project
+
+
+deps.dexmaker = "com.linkedin.dexmaker:dexmaker-mockito:$versions.dexmaker"
+deps.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+deps.timber = "com.jakewharton.timber:timber:$versions.timber"
+deps.mock_web_server = "com.squareup.okhttp3:mockwebserver:$versions.mockwebserver"
+deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+deps.rxAndroid = "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"
+deps.rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:$versions.rxjavaAdapter"
+deps.rxpermissions = "com.tbruyelle.rxpermissions2:rxpermissions:$versions.rxpermissions"
+
+deps.hamcrest = "org.hamcrest:hamcrest-all:$versions.hamcrest"
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.retrolambda = "me.tatarka:gradle-retrolambda:$versions.retrolambda"
+deps.qiniu_sdk = "com.qiniu:qiniu-android-sdk:$versions.qiniu_sdk"
+deps.and_permission="com.yanzhenjie:permission:$versions.and_permission"
+deps.swipebacklayout='me.imid.swipebacklayout.lib:library:1.1.0'
+
+ext.deps = deps
+
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.target_sdk = 23
+build_versions.compile_sdk = 28
+build_versions.build_tools = "28.0.2"
+ext.build_versions = build_versions
+
+
+
+def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    handler.maven { url 'https://jitpack.io' }
+}
+
+ext.addRepos = this.&addRepos

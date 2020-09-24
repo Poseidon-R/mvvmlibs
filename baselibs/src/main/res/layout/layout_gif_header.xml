@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.robot.baselibs.view.swipetoloadlayout.SwipeRefreshHeaderLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+<!--        android:layout_height="@dimen/load_more_footer_height_classic"-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/load_more_footer_height_classic">
+
+        <com.robot.baselibs.view.swipetoloadlayout.GifView
+            android:id="@+id/gvRefresh"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            custom:gif="@drawable/gif_loading"
+            />
+
+    </RelativeLayout>
+
+</com.robot.baselibs.view.swipetoloadlayout.SwipeRefreshHeaderLayout>
