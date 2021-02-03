@@ -34,7 +34,6 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import me.goldze.mvvmhabit.base.BaseActivity;
 import me.goldze.mvvmhabit.base.BaseViewModel;
-
 public abstract class RobotBaseActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseActivity<V, VM> implements BaseView {
     protected TipDialog loadingDialog;
     private CompositeDisposable mDisposables = new CompositeDisposable();
@@ -168,7 +167,7 @@ public abstract class RobotBaseActivity<V extends ViewDataBinding, VM extends Ba
     public void tokenInvalid() {
 //      EMClient.getInstance().logout(true);
         CommonDialog.Builder builder = new CommonDialog.Builder(this);
-        builder.setTitle("您的飞歌账号在其他设备上通过飞歌密码登录，如果这不是你的操作，你的飞歌密码已经泄露，请修改飞歌密码")
+        builder.setTitle("您的账号在其他设备上通过密码登录，如果这不是你的操作，你的密码已经泄露，请修改密码")
                 .setPositiveButton("确定", Color.parseColor("#141414"), new RobotCallBackBoolean() {
                     @Override
                     public void action(int type) {

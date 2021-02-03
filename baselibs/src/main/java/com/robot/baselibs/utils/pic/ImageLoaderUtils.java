@@ -13,7 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.robot.baselibs.R;
-import com.robot.baselibs.RobotApplication;
+import com.robot.baselibs.App;
 
 
 /**
@@ -228,7 +228,7 @@ public class ImageLoaderUtils {
     }
 
     public static RequestManager getGlideManager() {
-        return Glide.with(RobotApplication.getContext());
+        return Glide.with(App.getContext());
     }
 
 }

@@ -6,19 +6,13 @@ import android.content.pm.PackageManager;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
 
 import com.blankj.utilcode.util.DeviceUtils;
 import com.blankj.utilcode.util.PhoneUtils;
 import com.robot.baselibs.base.vm.RobotBaseViewModel;
-import com.robot.baselibs.configs.ConfigInfoManager;
 import com.robot.baselibs.configs.PrefsManager;
-import com.robot.baselibs.model.BaseResponse;
 import com.robot.baselibs.model.SplashBannerBean;
-import com.robot.baselibs.rx.AbstractSubscriber;
 import com.robot.baselibs.rx.AbstractViewModelSubscriber;
-import com.robot.baselibs.ui.SplashActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +22,6 @@ import api.CommonServiceFactory;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 
 /**
@@ -64,25 +57,25 @@ public class SplashViewModel extends RobotBaseViewModel {
         } else {
             params.put("onlyId", PhoneUtils.getDeviceId());
         }
-        CommonServiceFactory.listAppSplash(params)
-                .subscribe(new AbstractViewModelSubscriber<BaseResponse<SplashBannerBean>>(this) {
-                    @Override
-                    public void onNext(BaseResponse<SplashBannerBean> splashBannerBeanBaseResponse) {
-                        mBannerBean = splashBannerBeanBaseResponse.getData();
-                        PrefsManager.saveSplashBanner(mBannerBean);
-                    }
-                });
+//        CommonServiceFactory.listAppSplash(params)
+//                .subscribe(new AbstractViewModelSubscriber<BaseResponse<SplashBannerBean>>(this) {
+//                    @Override
+//                    public void onNext(BaseResponse<SplashBannerBean> splashBannerBeanBaseResponse) {
+//                        mBannerBean = splashBannerBeanBaseResponse.getData();
+//                        PrefsManager.saveSplashBanner(mBannerBean);
+//                    }
+//                });
     }
 
     /**
      * 启动启动页隐私弹框
      */
     private void splashAgreementDialog() {
-        if (ConfigInfoManager.getInstance().getAppSplashAgreement()) {
-            goNext();
-        } else {
-            getUI().getShowSplashAgreementDialog().postValue(null);
-        }
+//        if (ConfigInfoManager.getInstance().getAppSplashAgreement()) {
+//            goNext();
+//        } else {
+//            getUI().getShowSplashAgreementDialog().postValue(null);
+//        }
     }
 
     public void goNext() {

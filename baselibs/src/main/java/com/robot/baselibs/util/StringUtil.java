@@ -7,7 +7,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 
 
-import com.robot.baselibs.RobotApplication;
+import com.robot.baselibs.App;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -217,7 +217,7 @@ public class StringUtil {
     }
 
     public static Spanned fromHtml(int stringResource) {
-        Spanned htmlSpan = Html.fromHtml(RobotApplication.getContext().getString(stringResource));
+        Spanned htmlSpan = Html.fromHtml(App.getContext().getString(stringResource));
         return htmlSpan;
     }
 

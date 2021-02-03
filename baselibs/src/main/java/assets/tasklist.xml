@@ -1,0 +1,61 @@
+<projects>
+    <project
+            mode="mainProcess">
+        <task
+                name="TaskA" class="org.clc.app.bean.ConfigTest$TaskA"
+                executePriority="8"
+                mainThread="true"/>
+
+        <task
+                name="TaskB" class="org.clc.app.bean.ConfigTest$TaskB"
+                predecessor="TaskA"/>
+
+        <task
+                name="TaskC" class="org.clc.app.bean.ConfigTest$TaskC"
+                executePriority="4"
+                predecessor="TaskA"/>
+
+        <task
+                name="TaskD" class="org.clc.app.bean.ConfigTest$TaskD"
+                threadPriority="-5"
+                predecessor="TaskB,TaskC"/>
+
+        <task
+                name="TaskE" class="org.clc.app.bean.ConfigTest$TaskE" />
+
+        <task
+                name="TaskF" class="org.clc.app.bean.ConfigTest$TaskF"
+                mainThread="true"
+                predecessor="TaskC"/>
+
+        <task
+                name="TaskG" class="org.clc.app.bean.ConfigTest$TaskG"
+                threadPriority="-5"
+                predecessor="TaskC"/>
+
+    </project>
+
+
+
+    <project
+            mode="secondaryProcess">
+        <task
+                name="TaskA" class="org.clc.app.bean.ConfigTest$TaskA"
+                mainThread="true"/>
+
+        <task
+                name="TaskB" class="org.clc.app.bean.ConfigTest$TaskB"
+                predecessor="TaskA"/>
+
+        <task
+                name="TaskC" class="org.clc.app.bean.ConfigTest$TaskC"
+                executePriority="8"
+                predecessor="TaskA"/>
+
+        <task
+                name="TaskD" class="org.clc.app.bean.ConfigTest$TaskD"
+                predecessor="TaskB,TaskC"/>
+
+
+    </project>
+</projects>

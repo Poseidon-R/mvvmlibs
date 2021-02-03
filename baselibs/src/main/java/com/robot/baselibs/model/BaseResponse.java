@@ -7,26 +7,23 @@ package com.robot.baselibs.model;
  * @author：robot
  */
 public class BaseResponse<T> {
-    private int code;
-    private String message;
+    private int status;
+    private String msg;
     private T data;
-
-    private String apiName;//本地维护数据
-
-    public int getCode() {
-        return code;
+    public int getStatus() {
+        return status;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public T getData() {
@@ -35,23 +32,5 @@ public class BaseResponse<T> {
 
     public void setData(T data) {
         this.data = data;
-    }
-
-    public String getApiName() {
-        return apiName;
-    }
-
-    public void setApiName(String apiName) {
-        this.apiName = apiName;
-    }
-
-    @Override
-    public String toString() {
-        return "BaseResponse{" +
-                "code=" + code +
-                ", message='" + message + '\'' +
-                ", data=" + data +
-                ", apiName='" + apiName + '\'' +
-                '}';
     }
 }

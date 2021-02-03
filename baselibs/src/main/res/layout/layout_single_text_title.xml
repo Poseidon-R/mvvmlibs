@@ -9,12 +9,12 @@
 
     <ImageView
         android:id="@+id/iv_onback"
-        android:layout_width="49dp"
-        android:layout_height="49dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_vertical"
         android:background="@drawable/view_press_style"
         android:padding="16dp"
-        android:src="@mipmap/ic_back_white"
+        android:src="@mipmap/ic_back_black"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_height="49dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         tools:text="标题" />
 

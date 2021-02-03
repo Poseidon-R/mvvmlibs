@@ -3,7 +3,7 @@ package com.robot.baselibs.rx;
 import android.util.Log;
 
 import com.robot.baselibs.R;
-import com.robot.baselibs.RobotApplication;
+import com.robot.baselibs.App;
 import com.robot.baselibs.common.domain.HttpStatusCode;
 import com.robot.baselibs.exception.LocalException;
 import com.robot.baselibs.util.ActivityUtils;
@@ -31,7 +31,7 @@ public abstract class NormalSubscriber<T> implements Observer<T> {
 //                DKUserManager.resetUserInfo();
                 ActivityUtils.finishAllActivities();
                 try {
-                    ActivityUtils.startActivity(Class.forName(RobotApplication.getContext().getString(R.string.login_activity_path)));
+                    ActivityUtils.startActivity(Class.forName(App.getContext().getString(R.string.login_activity_path)));
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
                 }

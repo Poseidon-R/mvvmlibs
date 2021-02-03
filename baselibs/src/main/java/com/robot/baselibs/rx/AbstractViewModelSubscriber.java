@@ -1,6 +1,7 @@
 package com.robot.baselibs.rx;
 
 import com.robot.baselibs.base.vm.RobotBaseViewModel;
+import com.robot.baselibs.exception.LocalException;
 import com.robot.baselibs.util.ToastUtils;
 
 import io.reactivex.Observer;
@@ -32,7 +33,12 @@ public abstract class AbstractViewModelSubscriber<T> implements Observer<T> {
             return;
         }
         view.dismissLoadingDialog();
-        ToastUtils.showShort(e.getMessage());
+        if (e instanceof LocalException) {
+            ToastUtils.showShort(((LocalException) e).getMsg());
+        } else {
+            ToastUtils.showShort(e.getLocalizedMessage());
+        }
+
 //        if (e instanceof LocalException) {
 //            LocalException exception = (LocalException) e;
 //            //401 重新获取access token , 如果还返回412 就是refresh token 也失效了。需要重新登录

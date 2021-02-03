@@ -1,92 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:binding="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.robot.baselibs.vm.LoginViewModel" />
+    </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:src="@mipmap/register_logn" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:background="@null"
-            android:hint="请输入手机号"
-            android:drawablePadding="9dp"
-            android:drawableLeft="@mipmap/register_phone"
-            android:inputType="number"
-            android:textColor="@color/color33"
-            android:textColorHint="@color/color9E"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/color_cd" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:background="@null"
-            android:hint="请输入密码"
-            android:drawablePadding="9dp"
-            android:drawableLeft="@mipmap/register_password"
-            android:inputType="textPassword"
-            android:textColor="@color/color33"
-            android:textColorHint="@color/color9E"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/color_cd" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_25dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="@dimen/_25dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/signInUsernameHint"
+                android:text="@={viewModel.username}"
+                android:paddingLeft="4dp"
+                android:textColor="@color/color_3e"
+                android:textColorHint="@color/color_6e6e6e"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorEF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_25dp"
             android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginRight="@dimen/_25dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="注册账号"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:background="@null"
+                android:hint="@string/signInPasswordHint"
+                android:textColor="@color/color_3e"
+                android:text="@={viewModel.password}"
+                android:textColorHint="@color/color_6e6e6e"
+                android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:text="忘记密码"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorEF" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="22dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="22dp"
-            android:background="@drawable/radius_22_solid_common"
+            android:layout_height="@dimen/_50dp"
+            android:layout_marginLeft="@dimen/_20dp"
+            android:layout_marginTop="@dimen/_22dp"
+            android:layout_marginRight="@dimen/_20dp"
+            android:background="@drawable/radius_6_6caeee_637fe4"
             android:gravity="center"
-            android:text="登录"
+            android:text="@string/signIn"
+            app:onClickCommand="@{viewModel.doLogin}"
             android:textColor="@color/white"
+            android:textSize="16sp"
+             />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50dp"
+            android:layout_marginLeft="@dimen/_20dp"
+            android:layout_marginTop="@dimen/_14dp"
+            android:layout_marginRight="@dimen/_20dp"
+            android:background="@drawable/radius_6_white_6177e3"
+            android:gravity="center"
+            android:text="@string/register"
+            app:onClickCommand="@{viewModel.toRegister}"
+            android:textColor="#6177E3"
             android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20dp"
+            android:text="忘记密码?"
+            android:textColor="@color/color_3e"
+            android:textSize="14sp" />
     </LinearLayout>
 </layout>

@@ -13,7 +13,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 
 
-import com.robot.baselibs.RobotApplication;
+import com.robot.baselibs.App;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -52,7 +52,7 @@ public class FileUtils {
 
 
     public static final String FILES_DIR = SDCARD_DIR + "/" + "Android/data/" +
-            RobotApplication.getContext().getPackageName() + "/files/";
+            App.getContext().getPackageName() + "/files/";
 
     /**
      * 默认本地上传图片目录

@@ -13,7 +13,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 
 
-import com.robot.baselibs.RobotApplication;
+import com.robot.baselibs.App;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -41,7 +41,7 @@ public class FileUtil {
     public static String readAssetsFile(String path) {
         String str = null;
         try {
-            InputStream is = RobotApplication.getContext().getAssets().open(path);
+            InputStream is = App.getContext().getAssets().open(path);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -137,12 +137,12 @@ public class FileUtil {
     public static void refreshDCIM() {
         if (Build.VERSION.SDK_INT >= 19) {
             //兼容android4.4版本，只扫描存放照片的目录
-            MediaScannerConnection.scanFile(RobotApplication.getContext(),
+            MediaScannerConnection.scanFile(App.getContext(),
                     new String[]{Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath()},
                     null, null);
         } else {
             //扫描整个SD卡来更新系统图库，当文件很多时用户体验不佳，且不适合4.4以上版本
-            RobotApplication.getContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" +
+            App.getContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" +
                     Environment.getExternalStorageDirectory())));
         }
     }

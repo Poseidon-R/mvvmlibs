@@ -364,5 +364,12 @@
     <string name="goodeDetailKnow"><u>点击了解</u></string>
     <string name="confirmAddAddress">添加收货信息</string>
     <string name="newMembersTag">新会员专享折扣</string>
+    <string name="registerUsernameHint">使用手机号码注册</string>
+    <string name="registerVerifyCodeHint">请输入验证码</string>
+    <string name="registerPasswordHint">请输入密码</string>
+    <string name="signInUsernameHint">请输入手机号码</string>
+    <string name="signInPasswordHint">请输入密码或验证码</string>
+    <string name="signIn">登录</string>
+    <string name="register">注册</string>
 
 </resources>

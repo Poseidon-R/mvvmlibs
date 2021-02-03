@@ -1,6 +1,7 @@
 package com.robot.baselibs.common.api;
 
 import com.qihang.annotations.ApiFactory;
+import com.robot.baselibs.common.network.RetrofitClient;
 import com.robot.baselibs.model.BaseResponse;
 import com.robot.baselibs.model.SplashBannerBean;
 
@@ -16,7 +17,7 @@ import retrofit2.http.POST;
  *
  * @author：robot
  */
-@ApiFactory(value = RobotBaseApi.class)
+@ApiFactory(value = RetrofitClient.class)
 public interface CommonService {
 
     /**

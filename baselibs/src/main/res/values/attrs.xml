@@ -7,7 +7,17 @@
         <attr name="android:color" />
     </declare-styleable>
     <attr name="LoadingStyle" format="reference" />
+    <declare-styleable name="LightingProgressbar">
+        <attr name="textSize" format="dimension" />
 
+        <attr name="loadingColor" format="color" />
+
+        <attr name="stopColor" format="color" />
+
+        <attr name="radius" format="dimension" />
+
+        <attr name="borderWidth" format="dimension" />
+    </declare-styleable>
     <!-- tips -->
     <attr name="tip_dialog_bg" format="reference" />
     <attr name="tip_dialog_min_width" format="dimension" />

@@ -3,7 +3,7 @@ package com.robot.baselibs.configs;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.robot.baselibs.RobotApplication;
+import com.robot.baselibs.App;
 import com.robot.baselibs.configs.constants.Constants;
 import com.robot.baselibs.utils.json.JSONParseUtils;
 
@@ -34,100 +34,100 @@ public class ConfigInfoManager {
 
 
     public boolean getAppShowGuideView() {
-        return PreferencesUtils.getBoolean(RobotApplication.getContext(), Constants.APP_SHOW_GUIDE_VIEW, true);
+        return PreferencesUtils.getBoolean(App.getContext(), Constants.APP_SHOW_GUIDE_VIEW, true);
     }
 
     public void setAppShowGuideView(boolean appGuideView) {
-        PreferencesUtils.putBoolean(RobotApplication.getContext(), Constants.APP_SHOW_GUIDE_VIEW, appGuideView);
+        PreferencesUtils.putBoolean(App.getContext(), Constants.APP_SHOW_GUIDE_VIEW, appGuideView);
     }
 
     public boolean getAppShowGuideViewForUser() {
-        return PreferencesUtils.getBoolean(RobotApplication.getContext(), Constants.APP_SHOW_GUIDE_VIEW_FOR_USER, true);
+        return PreferencesUtils.getBoolean(App.getContext(), Constants.APP_SHOW_GUIDE_VIEW_FOR_USER, true);
     }
 
     public void setAppShowGuideViewForUser(boolean appGuideViewForUser) {
-        PreferencesUtils.putBoolean(RobotApplication.getContext(), Constants.APP_SHOW_GUIDE_VIEW_FOR_USER, appGuideViewForUser);
+        PreferencesUtils.putBoolean(App.getContext(), Constants.APP_SHOW_GUIDE_VIEW_FOR_USER, appGuideViewForUser);
     }
 
     public long getCalShowTime() {
-        return PreferencesUtils.getLong(RobotApplication.getContext(), Constants.CAL_SHOW_TIME, 0);
+        return PreferencesUtils.getLong(App.getContext(), Constants.CAL_SHOW_TIME, 0);
     }
 
     public void setCalShowTime(long time) {
-        PreferencesUtils.putLong(RobotApplication.getContext(), Constants.CAL_SHOW_TIME, time);
+        PreferencesUtils.putLong(App.getContext(), Constants.CAL_SHOW_TIME, time);
     }
 
     public void saveSearchHistory(List<String> historys) {
         Gson gson = new Gson();
         if (historys == null) {
-            PreferencesUtils.putString(RobotApplication.getContext(), Constants.SEARCH_HISTORY, "");
+            PreferencesUtils.putString(App.getContext(), Constants.SEARCH_HISTORY, "");
             return;
         }
-        PreferencesUtils.putString(RobotApplication.getContext(), Constants.SEARCH_HISTORY, gson.toJson(historys));
+        PreferencesUtils.putString(App.getContext(), Constants.SEARCH_HISTORY, gson.toJson(historys));
     }
 
     public List<String> getSearchHistory() {
-        String gsonstring = PreferencesUtils.getString(RobotApplication.getContext(), Constants.SEARCH_HISTORY, "");
+        String gsonstring = PreferencesUtils.getString(App.getContext(), Constants.SEARCH_HISTORY, "");
         if (TextUtils.isEmpty(gsonstring)) return new ArrayList<>();
         return JSONParseUtils.parseList(gsonstring, String.class);
     }
 
 
     public String getVipView() {
-        return PreferencesUtils.getString(RobotApplication.getContext(), Constants.VIP_VIEW, "off");
+        return PreferencesUtils.getString(App.getContext(), Constants.VIP_VIEW, "off");
     }
 
     public void setVipView(String vipView) {
-        PreferencesUtils.putString(RobotApplication.getContext(), Constants.VIP_VIEW, vipView);
+        PreferencesUtils.putString(App.getContext(), Constants.VIP_VIEW, vipView);
     }
 
     public String getUpdateVersion() {
-        return PreferencesUtils.getString(RobotApplication.getContext(), Constants.UPDATE_VERSION, "");
+        return PreferencesUtils.getString(App.getContext(), Constants.UPDATE_VERSION, "");
     }
 
     public void setUpdateVersion(String updateVersion) {
-        PreferencesUtils.putString(RobotApplication.getContext(), Constants.UPDATE_VERSION, updateVersion);
+        PreferencesUtils.putString(App.getContext(), Constants.UPDATE_VERSION, updateVersion);
     }
 
 
     public boolean isShowUpdate() {
-        return PreferencesUtils.getBoolean(RobotApplication.getContext(), Constants.IS_SHOW_UPDATE, true);
+        return PreferencesUtils.getBoolean(App.getContext(), Constants.IS_SHOW_UPDATE, true);
     }
 
     public void setShowUpdate(boolean showUpdate) {
-        PreferencesUtils.putBoolean(RobotApplication.getContext(), Constants.IS_SHOW_UPDATE, showUpdate);
+        PreferencesUtils.putBoolean(App.getContext(), Constants.IS_SHOW_UPDATE, showUpdate);
     }
 
     public boolean getAppSplashAgreement() {
-        return PreferencesUtils.getBoolean(RobotApplication.getContext(), Constants.APP_SPLASH_AGREEMENT, false);
+        return PreferencesUtils.getBoolean(App.getContext(), Constants.APP_SPLASH_AGREEMENT, false);
     }
 
     public void setAppSplashAgreement(boolean appSplashAgreement) {
-        PreferencesUtils.putBoolean(RobotApplication.getContext(), Constants.APP_SPLASH_AGREEMENT, appSplashAgreement);
+        PreferencesUtils.putBoolean(App.getContext(), Constants.APP_SPLASH_AGREEMENT, appSplashAgreement);
     }
 
     public boolean getHomeScanClick() {
-        return PreferencesUtils.getBoolean(RobotApplication.getContext(), Constants.HOME_SCAN_CLICK, false);
+        return PreferencesUtils.getBoolean(App.getContext(), Constants.HOME_SCAN_CLICK, false);
     }
 
     public void setHomeScanClick(boolean homeScanClick) {
-        PreferencesUtils.putBoolean(RobotApplication.getContext(), Constants.HOME_SCAN_CLICK, homeScanClick);
+        PreferencesUtils.putBoolean(App.getContext(), Constants.HOME_SCAN_CLICK, homeScanClick);
     }
 
     public String getAppLastExitTime() {
-        return PreferencesUtils.getString(RobotApplication.getContext(), Constants.APP_LAST_EXIT_TIME);
+        return PreferencesUtils.getString(App.getContext(), Constants.APP_LAST_EXIT_TIME);
     }
 
     public void setAppLastExitTime(String lastExitTime) {
-        PreferencesUtils.putString(RobotApplication.getContext(), Constants.APP_LAST_EXIT_TIME, lastExitTime);
+        PreferencesUtils.putString(App.getContext(), Constants.APP_LAST_EXIT_TIME, lastExitTime);
     }
 
     public int getHomeGoodsRandom() {
-        return PreferencesUtils.getInt(RobotApplication.getContext(), Constants.HOME_GOODS_RANDOM, -1);
+        return PreferencesUtils.getInt(App.getContext(), Constants.HOME_GOODS_RANDOM, -1);
     }
 
     public void setHomeGoodsRandom(int homeGoodsRandom) {
-        PreferencesUtils.putInt(RobotApplication.getContext(), Constants.HOME_GOODS_RANDOM, homeGoodsRandom);
+        PreferencesUtils.putInt(App.getContext(), Constants.HOME_GOODS_RANDOM, homeGoodsRandom);
     }
 
 //    public void saveLoginUserInfo(UserLoginInfoBean userLoginInfoBean) {
