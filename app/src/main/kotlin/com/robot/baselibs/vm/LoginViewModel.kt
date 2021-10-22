@@ -9,7 +9,7 @@ import com.robot.baselibs.base.vm.RobotBaseViewModel
 import com.robot.baselibs.model.BaseResponse
 import com.robot.baselibs.pojo.LoginEntity
 import com.robot.baselibs.rx.AbstractViewModelSubscriber
-import com.robot.baselibs.ui.RegisterActivity
+//import com.robot.baselibs.ui.RegisterActivity
 import com.robot.baselibs.util.ActivityUtils
 import com.robot.baselibs.util.ToastUtils
 import me.goldze.mvvmhabit.binding.command.BindingAction
@@ -29,7 +29,7 @@ class LoginViewModel(application: Application) : RobotBaseViewModel(application)
 
 
     var toRegister = BindingCommand<Any>(BindingAction {
-        ActivityUtils.startActivity(RegisterActivity::class.java)
+//        ActivityUtils.startActivity(RegisterActivity::class.java)
     })
     var doLogin = BindingCommand<Any>(BindingAction {
         loginReq()
