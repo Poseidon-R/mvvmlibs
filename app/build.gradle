@@ -16,7 +16,7 @@ android {
         enabled true
     }
     defaultConfig {
-        applicationId "com.robot.baselibs"
+        applicationId "com.robot.glass"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -114,19 +114,19 @@ android {
     }
     productFlavors {
         publish {
-            applicationId "com.robot.baselibs"
+            applicationId "com.robot.glass"
             buildConfigField 'String', 'API_SERVER_URL', '"http://www.baidu.com/api/"'
             buildConfigField 'String', 'PIC_BASE_URL', '"http://www.baidu.com/api/"'
             buildConfigField 'String', 'WEB_BASE_URL', '"http://www.baidu.com/"'
-            manifestPlaceholders = [app_name: "robot"]
+            manifestPlaceholders = [app_name: "Glass"]
             dimension "default"
         }
         dev {
-            applicationId "com.robot.baselibs.dev"
+            applicationId "com.robot.glass.dev"
             buildConfigField 'String', 'API_SERVER_URL', '"http://www.baidu.com/api/"'
             buildConfigField 'String', 'PIC_BASE_URL', '"http://www.baidu.com/api/"'
             buildConfigField 'String', 'WEB_BASE_URL', '"http://www.baidu.com/"'
-            manifestPlaceholders = [app_name: "robotByDev"]
+            manifestPlaceholders = [app_name: "GlassDev"]
             dimension "default"
         }
     }
